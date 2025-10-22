@@ -70,9 +70,7 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 ## 🔍 Dependencies
 
 - **Python 3.11+**  
-  `pandas`, `numpy`, `sentence-transformers`, `gensim`, `scikit-learn`, `shap`, `matplotlib`, `gbvs`, `sam2`
-- **R 4.3+**  
-  `lme4`, `pbkrtest`, `emmeans`, `ggplot2`, `MuMIn`, `ARTool`
+  `pandas`, `numpy`, `sentence-transformers`, `gensim`, `scikit-learn`, `shap`, `matplotlib`, 'seaborn', 'openpyxl', 'joblib', 'spacy', 'scipy'
 
 ---
 
