@@ -1,0 +1,12 @@
+pandas==2.0.3
+numpy==1.24.3
+scikit-learn
+matplotlib==3.7.2
+seaborn==0.12.2
+openpyxl==3.0.10
+joblib==1.2.0
+spacy==3.7.2
+gensim==4.3.0
+sentence-transformers==2.2.2
+shap==0.45.1
+scipy==1.11.1
