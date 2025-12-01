@@ -94,7 +94,6 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 If you use these materials or build on this work, please cite:
 
 Rybansky, F. (2025). Seeing Just Enough: The Minimal Visual Ingredients of Egocentric Action Recognition.
-[Open Science Framework link or DOI]
 
 ---
 
