@@ -31,13 +31,13 @@ Two main experiments were conducted:
 
 ### SBERT Framework Used for Computing Semantic Similarity Between Responses
 
-![SBERT framework](images/Figure 1.png)
+![SBERT framework](images/Figure_1.png)
 
 ---
 
 ### Spatial and Temporal Reduction Process
 
-![Reduction Flow](images/Figure 4.png)
+![Reduction Flow](images/Figure_4.png)
 
 ---
 
