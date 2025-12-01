@@ -71,8 +71,14 @@ Two main experiments were conducted:
 ```
 ---
 
+## 📦 Human Ground Truth Videos
+The full database of videos used in Experiment 1 of this project is available at:
+[Download from OneDrive](https://newcastle-my.sharepoint.com/:f:/g/personal/c3070719_newcastle_ac_uk/EgBj2XoKkLNEk43nMkc06rgBCVr_RzNIys1_Brc6nKiKSg)
+
+---
+
 ## 📦 Epic-ReduAct
-The full database of videos, cropped quadrants, and MIRCs used in this project is available in the companion repository:  
+The full database of videos, cropped quadrants, and MIRCs used in Experiment 2 of this project is available in the companion repository:  
 [**SadeghRahmaniB/Epic-ReduAct**](https://github.com/SadeghRahmaniB/Epic-ReduAct)
 
 These files can be directly mapped to corresponding analyses and metadata in this repository.
