@@ -12,18 +12,18 @@ import shap
 import seaborn as sns
 import joblib
 
-# specify if save plots
+# specify if you want to save plots automatically, plot will be saved automatically after you close its pop-up window
 save_plots = 1
-# specify if there are missing values
+# specify if there are missing feature values for some samples
 miss_values = 0
 
 # Load the excel file
-file_path = '.../MIRCs_unrec_samples.xlsx'
+file_path = 'Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx'      # Replace with path to your downloaded excel file with samples and features for classification
 df = pd.read_excel(file_path, sheet_name='Easy')
 
 # set output paths
-out_path = '.../results_easy.xlsx'
-plots_dir = '.../...'
+out_path = '.../results.xlsx'             # Replace with .xlsx path to where you want the classification performance metrics and SHAP analysis to be written
+plots_dir = '.../...'                     # Replace with path to were you want SHAP plots to be saved automatically
 model_out_path = plots_dir + '/random_forest_model.pkl'
 # Initialize an empty DataFrame if it doesn't exist yet
 results_df = pd.DataFrame()
@@ -350,4 +350,5 @@ plt.show()
 # Plot a dependence plot to examine specific interaction
 # Now plot the dependence plot using the accumulated SHAP values
 shap.dependence_plot('active hand', all_shap_values_array, X, interaction_index='contextual object') # can use all_shap_values_array_easy or all_shap_values_array_hard or all_shap_values_array
+
 shap.dependence_plot('background', all_shap_values_array, X, interaction_index='active object') # can use all_shap_values_array_easy or all_shap_values_array_hard or all_shap_values_array
