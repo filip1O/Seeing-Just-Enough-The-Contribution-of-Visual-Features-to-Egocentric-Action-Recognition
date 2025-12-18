@@ -66,6 +66,7 @@ Two main experiments were conducted:
 ├─ "pooled_LL_LL_LL_03159.csv" - example file with responses to quadrant LL_LL_LL_03159, the "SBERT_framework_response-GT.py" script can be applied to this file to compute semantic similarities between HGT and responses
 ├
 ├─ 📁 segmentation_masks/ # .mp4 files with segmentations, colour coding spreadhseet and reasoning for segmented objects
+├
 └─ "main_reduction_master.xlsx" - results of participant testing in Experiment 2 for each quadrant and various descriptive statistics
 
 ```
