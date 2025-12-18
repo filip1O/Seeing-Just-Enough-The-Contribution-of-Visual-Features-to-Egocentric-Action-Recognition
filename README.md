@@ -45,28 +45,28 @@ Two main experiments were conducted:
 
 ```text
 📁 Human Ground Truth/
-├
-├─ "HGT_master.xlsx" - Human Ground Truth, Recognition Consistency and other descriptive statistics for each video
-├
+├─ 📁 demos/
 ├─ "SBERT_framework_response-response.py" - script used to quantify pair-wise Semantic Similarities between responses using SBERT
 ├
-└─ "10788.csv" - example file with responses to video 10788, the "SBERT_framework_response-response.py" script can be applied to this file to construct the semantic space of responses
+├─ 📁 example_video_responses/
+├─ "10788.csv" - example file with responses to video 10788, the "SBERT_framework_response-response.py" script can be applied to this file to construct the semantic space of responses
+├
+└─ "HGT_master.xlsx" - Human Ground Truth, Recognition Consistency and other descriptive statistics for each video
+
 
 📁 Reduction Experiment/
+├─ 📁 binary_classification_sets_and_results/# sets used for classification + classification results of each comparison
 ├
-├─ binary_classification_sets_and_results/# sets used for classification + classification results of each comparison
-├
-├─ segmentation_masks/ # .mp4 files with segmentations, colour coding spreadhseet and reasoning for segmented objects
-├
+├─ 📁 demos/
 ├─ "loo_randomforest_classification_and_shap.py" - base script used for classification and SHAP (can be ran on provided classification sets)
-├
 ├─ "loo_randomforest_boruta_bootstrap.py" - script used to produce the Boruta threshold and assess the significance of SHAP feature importance (can be ran on provided classification sets)
-├
-├─ "main_reduction_master.xlsx" - results of participant testing in Experiment 2 for each quadrant and various descriptive statistics
-├
 ├─ "SBERT_framework_response-GT.py" - script used to compute Semantic Similarities between responses and Ground Truths
 ├
-└─"pooled_LL_LL_LL_03159" - example file with responses to quadrant LL_LL_LL_03159, the "SBERT_framework_response-GT.py" script can be applied to this file to compute semantic similarities between HGT and responses
+├─ 📁 example_video_responses/
+├─ "pooled_LL_LL_LL_03159.csv" - example file with responses to quadrant LL_LL_LL_03159, the "SBERT_framework_response-GT.py" script can be applied to this file to compute semantic similarities between HGT and responses
+├
+├─ 📁 segmentation_masks/ # .mp4 files with segmentations, colour coding spreadhseet and reasoning for segmented objects
+└─ "main_reduction_master.xlsx" - results of participant testing in Experiment 2 for each quadrant and various descriptive statistics
 
 ```
 ---
