@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from scipy.stats import spearmanr
 import os
 
-# specify if there are missing values
+# specify if there are missing feature values for some samples
 miss_values = 0
 
 # Load the excel file wwith samples and features
@@ -278,3 +278,4 @@ print(int_summary)
 summary.to_csv(feat_out_path, index=False)
 
 int_summary.to_csv(int_out_path, index=False)
+
