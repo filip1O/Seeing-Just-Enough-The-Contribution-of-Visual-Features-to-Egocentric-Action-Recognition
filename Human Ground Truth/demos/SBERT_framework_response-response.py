@@ -29,8 +29,8 @@ p = 0.375
 b = 1.375
 
 # set directories
-folder_path = ".../..."
-out_folder_path = ".../..."
+folder_path = "Human Ground Truth/example_video_responses/10788.csv"      # Replace with path to your downloaded file with written responses
+out_folder_path = ".../..."                                               # Replace with path for saving the results
 
 # --------- specify one file to process ---------
 target_file = "10788.csv"
@@ -128,4 +128,5 @@ out_data.to_csv(out_file_path, index=False)
 
 # report time
 file_processing_time = time.time() - file_start_time
+
 print(f"Processed {target_file} in {file_processing_time:.2f} seconds.")
