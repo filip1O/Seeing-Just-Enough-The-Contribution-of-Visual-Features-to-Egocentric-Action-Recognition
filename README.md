@@ -55,7 +55,7 @@ Two main experiments were conducted:
 
 
 📁 Reduction Experiment/
-├─ 📁 binary_classification_sets_and_results/# sets used for classification + classification results of each comparison
+├─ 📁 binary_classification_sets_and_results/ - sets used for classification + classification results of each comparison
 ├
 ├─ 📁 demos/
 ├─ "loo_randomforest_classification_and_shap.py" - base script used for classification and SHAP (can be ran on provided classification sets)
@@ -65,7 +65,7 @@ Two main experiments were conducted:
 ├─ 📁 example_video_responses/
 ├─ "pooled_LL_LL_LL_03159.csv" - example file with responses to quadrant LL_LL_LL_03159, the "SBERT_framework_response-GT.py" script can be applied to this file to compute semantic similarities between HGT and responses
 ├
-├─ 📁 segmentation_masks/ # .mp4 files with segmentations, colour coding spreadhseet and reasoning for segmented objects
+├─ 📁 segmentation_masks/ - .mp4 files with segmentations, colour coding spreadhseet and reasoning for segmented objects
 ├
 └─ "main_reduction_master.xlsx" - results of participant testing in Experiment 2 for each quadrant and various descriptive statistics
 
