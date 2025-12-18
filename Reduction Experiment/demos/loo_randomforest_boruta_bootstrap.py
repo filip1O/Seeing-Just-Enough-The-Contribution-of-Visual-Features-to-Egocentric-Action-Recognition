@@ -9,13 +9,13 @@ import os
 miss_values = 0
 
 # Load the excel file wwith samples and features
-file_path = '.../....'
+file_path = "Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx"      # Replace with path to your downloaded excel file with samples and features for classification
 df = pd.read_excel(file_path)
 
 # interactions output
-int_out_path = '.../.....csv'
+int_out_path = '.../.....csv'           # Replace with .csv path to save the Boruta SHAP results for feature interactions
 # features output
-feat_out_path = '.../.....csv'
+feat_out_path = '.../.....csv'          # Replace with .csv path to save the Boruta SHAP results for main feature effects
 
 # Specify columns to keep (features to use)
 columns_to_keep = ['active_object', 'active_hand', 'contextual_object', 'background', 'salient_color', 'salient_dklcolor', 'salient_flicker', 'salient_intensity', 'salient_motion', 'salient_orientation', 'salient_contrast']  # replace with your desired features
@@ -276,4 +276,5 @@ print("Top interactions (strict Boruta):")
 print(int_summary)
 
 summary.to_csv(feat_out_path, index=False)
+
 int_summary.to_csv(int_out_path, index=False)
