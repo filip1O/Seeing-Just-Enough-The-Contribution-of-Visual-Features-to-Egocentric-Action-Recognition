@@ -93,18 +93,106 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 
 ---
 
-## ⚙️ Running the Analysis Demos
+## ⚙️ Running the Analysis Demos – Step‑by‑Step Guide
+================================================
 
-1. Clone this repository  
-   ```bash
-   git clone https://github.com/filip1O/seeing-just-enough.git
-   cd seeing-just-enough
-   
-2. Create a Python environment and install requirements:
-    ```bash
+------------------------------------------------
+1️⃣ Install Git (required to download the project)
+------------------------------------------------
+Windows:
+• Download Git from https://git-scm.com/download/win
+• Run the installer → keep default options
+• After installation, reopen Command Prompt (or PowerShell)
+
+Mac:
+• Download Git from https://git-scm.com/download/mac
+OR if you have Homebrew installed:
+    brew install git
+
+To check Git installed correctly:
+    git --version
+
+------------------------------------------------
+2️⃣ Install Python
+------------------------------------------------
+You need Python 3.9 or newer.
+
+Windows:
+• Download from https://www.python.org/downloads/windows/
+• IMPORTANT: Tick “Add Python to PATH” during installation
+
+Mac:
+• Download from https://www.python.org/downloads/macos/
+
+Check installation:
+    python --version
+(or on Mac sometimes)
+    python3 --version
+
+
+------------------------------------------------
+3️⃣ Download (Clone) the Repository
+------------------------------------------------
+Choose a folder where you want the project stored.
+Open:
+• Windows → Command Prompt / PowerShell
+• Mac → Terminal
+
+Then run:
+    git clone https://github.com/filip1O/Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition.git
+
+Move into the project folder:
+    cd Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition
+
+
+------------------------------------------------
+4️⃣ Create a Virtual Environment (Recommended)
+------------------------------------------------
+Windows (Command Prompt):
+    python -m venv venv
+    venv\Scripts\activate
+
+Mac (Terminal):
+    python3 -m venv venv
+    source venv/bin/activate
+
+If it works, your terminal line will begin with (venv)
+
+
+------------------------------------------------
+5️⃣ Install Required Python Packages
+------------------------------------------------
+Run (Command Prompt / Terminal):
     pip install -r requirements.txt
 
-3. Run feature extraction and classification pipelines
+
+------------------------------------------------
+6️⃣ Run The Demo Scripts
+------------------------------------------------
+There are 4 demo scripts. Navigate into the respective folder.
+
+HGT Demo Scripts:
+cd "Human Ground Truth/demos"
+
+Reduction Experiment Demo Scripts:
+cd "Reduction Experiment/demos"
+
+To run a script:
+Windows:
+    python script_name.py
+
+Mac:
+    python3 script_name.py
+
+
+------------------------------------------------
+❓ If Something Fails
+------------------------------------------------
+Common fixes:
+• If python command doesn't work → try python3
+• If pip doesn't work → try pip3
+• If Git command not found → reinstall Git and reopen terminal
+• Make sure you're inside the correct project folder
 
 ---
 
