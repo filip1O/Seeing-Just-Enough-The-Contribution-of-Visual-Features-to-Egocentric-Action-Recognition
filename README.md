@@ -96,38 +96,42 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 ## ⚙️ Running the Analysis Demos – Step‑by‑Step Guide
 ================================================
 
-------------------------------------------------
 1️⃣ Install Git (required to download the project)
-------------------------------------------------
 Windows:
-• Download Git from https://git-scm.com/download/win
-• Run the installer → keep default options
-• After installation, reopen Command Prompt (or PowerShell)
+- Download Git from https://git-scm.com/download/win
+- Run the installer → keep default options
+- After installation, reopen Command Prompt (or PowerShell)
 
 Mac:
-• Download Git from https://git-scm.com/download/mac
-OR if you have Homebrew installed:
-    brew install git
-
+- Download Git from https://git-scm.com/download/mac
+- OR if you have Homebrew installed:
+``` bash
+brew install git
+```
 To check Git installed correctly:
-    git --version
-
+``` bash
+git --version
+```
 ------------------------------------------------
 2️⃣ Install Python
 ------------------------------------------------
 You need Python 3.9 or newer.
 
 Windows:
-• Download from https://www.python.org/downloads/windows/
-• IMPORTANT: Tick “Add Python to PATH” during installation
+- Download from https://www.python.org/downloads/windows/
+- IMPORTANT: Tick “Add Python to PATH” during installation
 
 Mac:
-• Download from https://www.python.org/downloads/macos/
+- Download from https://www.python.org/downloads/macos/
 
 Check installation:
-    python --version
+``` bash
+python --version
+```
 (or on Mac sometimes)
-    python3 --version
+``` bash
+python3 --version
+```
 
 
 ------------------------------------------------
