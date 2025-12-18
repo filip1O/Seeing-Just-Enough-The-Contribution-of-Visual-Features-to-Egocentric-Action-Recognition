@@ -34,9 +34,8 @@ p = 0.375
 b = 1.375
 
 # ---------------- PROCESS SINGLE FILE ----------------
-folder_path = ".../..."
-filename = "your_file.csv"   # <<< replace with the exact file you want
-file_path = os.path.join(folder_path, filename)
+file_path = "Reduction Experiment/example_video_responses/pooled_LL_LL_LL_03159.csv"    # Replace with path to your downloaded file with written responses to a video cropping,
+                                                                                        # the result will be written back into this file
 start_time = time.time()
 print(f"Processing file: {filename}")
 
@@ -157,4 +156,5 @@ p_data.to_csv(file_path, index=False)
 
 # timing
 file_processing_time = time.time() - file_start_time
+
 print(f"Finished processing {filename} in {file_processing_time:.2f} seconds")
