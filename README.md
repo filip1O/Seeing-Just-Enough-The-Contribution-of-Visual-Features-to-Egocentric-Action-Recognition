@@ -92,7 +92,7 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 
 ---
 
-## ⚙️ Reproducing the Analyses
+## ⚙️ Running the Analysis Demos
 
 1. Clone this repository  
    ```bash
