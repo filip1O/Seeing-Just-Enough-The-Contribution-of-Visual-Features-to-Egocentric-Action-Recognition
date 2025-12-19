@@ -94,9 +94,9 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 ---
 
 ## ⚙️ Running the Analysis Demos – Step‑by‑Step Guide
-================================================
 
-1️⃣ Install Git (required to download the project)
+1️⃣ Install Git (required to clone the project)
+
 Windows:
 - Download Git from https://git-scm.com/download/win
 - Run the installer → keep default options
@@ -112,9 +112,9 @@ To check Git installed correctly:
 ``` bash
 git --version
 ```
-------------------------------------------------
+
 2️⃣ Install Python
-------------------------------------------------
+
 You need Python 3.9 or newer.
 
 Windows:
@@ -133,13 +133,11 @@ python --version
 python3 --version
 ```
 
-
-------------------------------------------------
 3️⃣ Download or Clone the Repository
-------------------------------------------------
+
 To clone, Open:
-• Windows → Command Prompt / PowerShell
-• Mac → Terminal
+- Windows → Command Prompt / PowerShell
+- Mac → Terminal
 
 Then run:
 ``` bash
@@ -151,10 +149,8 @@ Move into the project folder:
 cd Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition
 ```
 
-
-------------------------------------------------
 4️⃣ Create a Virtual Environment (Recommended)
-------------------------------------------------
+
 Windows (Command Prompt):
 ``` bash
 python -m venv venv
@@ -169,18 +165,15 @@ source venv/bin/activate
 
 If it works, your terminal line will begin with (venv)
 
-
-------------------------------------------------
 5️⃣ Install Required Python Packages
-------------------------------------------------
+
 Run (Command Prompt / Terminal):
 ``` bash
 pip install -r requirements.txt
 ```
 
-------------------------------------------------
 6️⃣ Run The Demo Scripts
-------------------------------------------------
+
 There are 4 demo scripts. Navigate into the respective folder.
 
 HGT Demo Scripts:
@@ -194,24 +187,23 @@ cd "Reduction Experiment/demos"
 ```
 
 To run a script:
-Windows:
+- Windows:
 ``` bash
 python script_name.py
 ```
 
-Mac:
+- Mac:
 ``` bash
 python3 script_name.py
 ```
 
-------------------------------------------------
 ❓ If Something Fails
-------------------------------------------------
+
 Common fixes:
-• If python command doesn't work → try python3
-• If pip doesn't work → try pip3
-• If Git command not found → reinstall Git and reopen terminal
-• Make sure you're inside the correct project folder
+- If python command doesn't work → try python3
+- If pip doesn't work → try pip3
+- If Git command not found → reinstall Git and reopen terminal
+- Make sure you're inside the correct project folder
 
 ---
 
