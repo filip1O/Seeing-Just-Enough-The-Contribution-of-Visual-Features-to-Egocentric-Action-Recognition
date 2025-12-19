@@ -135,7 +135,7 @@ python3 --version
 
 3️⃣ Download or Clone the Repository
 
-To clone, Open:
+To clone, open:
 - Windows → Command Prompt / PowerShell
 - Mac → Terminal
 
