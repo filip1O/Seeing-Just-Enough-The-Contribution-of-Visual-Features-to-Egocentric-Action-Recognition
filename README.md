@@ -135,30 +135,37 @@ python3 --version
 
 
 ------------------------------------------------
-3️⃣ Download (Clone) the Repository
+3️⃣ Download or Clone the Repository
 ------------------------------------------------
-Choose a folder where you want the project stored.
-Open:
+To clone, Open:
 • Windows → Command Prompt / PowerShell
 • Mac → Terminal
 
 Then run:
-    git clone https://github.com/filip1O/Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition.git
+``` bash
+git clone https://github.com/filip1O/Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition.git
+```
 
 Move into the project folder:
-    cd Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition
+``` bash
+cd Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition
+```
 
 
 ------------------------------------------------
 4️⃣ Create a Virtual Environment (Recommended)
 ------------------------------------------------
 Windows (Command Prompt):
-    python -m venv venv
-    venv\Scripts\activate
+``` bash
+python -m venv venv
+venv\Scripts\activate
+```
 
 Mac (Terminal):
-    python3 -m venv venv
-    source venv/bin/activate
+``` bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
 If it works, your terminal line will begin with (venv)
 
@@ -167,8 +174,9 @@ If it works, your terminal line will begin with (venv)
 5️⃣ Install Required Python Packages
 ------------------------------------------------
 Run (Command Prompt / Terminal):
-    pip install -r requirements.txt
-
+``` bash
+pip install -r requirements.txt
+```
 
 ------------------------------------------------
 6️⃣ Run The Demo Scripts
@@ -176,18 +184,25 @@ Run (Command Prompt / Terminal):
 There are 4 demo scripts. Navigate into the respective folder.
 
 HGT Demo Scripts:
+``` bash
 cd "Human Ground Truth/demos"
+```
 
 Reduction Experiment Demo Scripts:
+```
 cd "Reduction Experiment/demos"
+```
 
 To run a script:
 Windows:
-    python script_name.py
+``` bash
+python script_name.py
+```
 
 Mac:
-    python3 script_name.py
-
+``` bash
+python3 script_name.py
+```
 
 ------------------------------------------------
 ❓ If Something Fails
