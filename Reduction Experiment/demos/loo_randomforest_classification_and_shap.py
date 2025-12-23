@@ -18,8 +18,8 @@ save_plots = 1
 miss_values = 0
 
 # Load the excel file
-file_path = 'Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx'      # Replace with path to your downloaded excel file with samples and features for classification
-df = pd.read_excel(file_path, sheet_name='Easy')
+input_path = 'Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx'      # Replace with path to your downloaded excel file with samples and features for classification
+df = pd.read_excel(input_path, sheet_name='Easy')
 
 # set output paths
 out_path = '.../results.xlsx'             # Replace with .xlsx path to where you want the classification performance metrics and SHAP analysis to be written
@@ -352,3 +352,4 @@ plt.show()
 shap.dependence_plot('active hand', all_shap_values_array, X, interaction_index='contextual object') # can use all_shap_values_array_easy or all_shap_values_array_hard or all_shap_values_array
 
 shap.dependence_plot('background', all_shap_values_array, X, interaction_index='active object') # can use all_shap_values_array_easy or all_shap_values_array_hard or all_shap_values_array
+
