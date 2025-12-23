@@ -9,8 +9,8 @@ import os
 miss_values = 0
 
 # Load the excel file wwith samples and features
-file_path = "Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx"      # Replace with path to your downloaded excel file with samples and features for classification
-df = pd.read_excel(file_path)
+input_path = "Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx"      # Replace with path to your downloaded excel file with samples and features for classification
+df = pd.read_excel(input_path)
 
 # interactions output
 int_out_path = '.../.....csv'           # Replace with .csv path to save the Boruta SHAP results for feature interactions
@@ -278,4 +278,5 @@ print(int_summary)
 summary.to_csv(feat_out_path, index=False)
 
 int_summary.to_csv(int_out_path, index=False)
+
 
