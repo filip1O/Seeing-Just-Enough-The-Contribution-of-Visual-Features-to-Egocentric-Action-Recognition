@@ -93,117 +93,29 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 
 ---
 
-## ⚙️ Running the Analysis Demos – Step‑by‑Step Guide
+## ⚙️ Running the Analysis Demos
 
-1️⃣ Install Git (required to clone the project)
+1️⃣ Download the Demo Script and the Associated Spreadsheet
 
-Windows:
-- Download Git from https://git-scm.com/download/win
-- Run the installer → keep default options
-- After installation, reopen Command Prompt (or PowerShell)
+The script will perform analysis on the associated spreadsheet. The online location of spreadsheet associated with each script is encoded in the resepective script as 'input_path'.
 
-Mac:
-- Download Git from https://git-scm.com/download/mac
-- OR if you have Homebrew installed:
-``` bash
-brew install git
-```
-To check Git installed correctly:
-``` bash
-git --version
-```
+2️⃣ Install Required Python Packages
 
-2️⃣ Install Python
-
-You need Python 3.9 or newer.
-
-Windows:
-- Download from https://www.python.org/downloads/windows/
-- IMPORTANT: Tick “Add Python to PATH” during installation
-
-Mac:
-- Download from https://www.python.org/downloads/macos/
-
-Check installation:
-``` bash
-python --version
-```
-(or on Mac sometimes)
-``` bash
-python3 --version
-```
-
-3️⃣ Download or Clone the Repository
-
-To clone, open:
-- Windows → Command Prompt / PowerShell
-- Mac → Terminal
-
-Then run:
+Manually or by running in Shell (Windows) / Terminal (Mac) (must have GitHub installed):
 ``` bash
 git clone https://github.com/filip1O/Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition.git
-```
-
-Move into the project folder:
-``` bash
-cd Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition
-```
-
-4️⃣ Create a Virtual Environment (Recommended)
-
-Windows (Command Prompt):
-``` bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-Mac (Terminal):
-``` bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-If it works, your terminal line will begin with (venv)
-
-5️⃣ Install Required Python Packages
-
-Run (Command Prompt / Terminal):
-``` bash
+cd "Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition"
 pip install -r requirements.txt
 ```
 
-6️⃣ Run The Demo Scripts
+3️⃣ Set Input and Output Filepaths
 
-There are 4 demo scripts. Navigate into the respective folder.
+Replace the input and output path specifications in the downloaded script with your desired local directories.
 
-HGT Demo Scripts:
-``` bash
-cd "Human Ground Truth/demos"
-```
 
-Reduction Experiment Demo Scripts:
-```
-cd "Reduction Experiment/demos"
-```
+4️⃣ Run The Demo Script in a Python interpreter
 
-To run a script:
-- Windows:
-``` bash
-python script_name.py
-```
-
-- Mac:
-``` bash
-python3 script_name.py
-```
-
-❓ If Something Fails
-
-Common fixes:
-- If python command doesn't work → try python3
-- If pip doesn't work → try pip3
-- If Git command not found → reinstall Git and reopen terminal
-- Make sure you're inside the correct project folder
+There are 4 demo scripts. HGT Demo Scripts in "Human Ground Truth/demos" and Reduction Experiment Demo Scripts in "Reduction Experiment/demos".
 
 ---
 
