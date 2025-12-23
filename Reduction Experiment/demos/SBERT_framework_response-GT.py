@@ -34,13 +34,13 @@ p = 0.375
 b = 1.375
 
 # ---------------- PROCESS SINGLE FILE ----------------
-file_path = "Reduction Experiment/example_video_responses/pooled_LL_LL_LL_03159.csv"    # Replace with path to your downloaded file with written responses to a video cropping,
+input_path = "Reduction Experiment/example_video_responses/pooled_LL_LL_LL_03159.csv"    # Replace with path to your downloaded file with written responses to a video cropping,
                                                                                         # the result will be written back into this file
 start_time = time.time()
 print(f"Processing file: {filename}")
 
 file_start_time = time.time()
-p_data = pd.read_csv(file_path)
+p_data = pd.read_csv(input_path)
 
 list_sem_sim = []
 
@@ -152,9 +152,10 @@ for _index, row in p_data.iterrows():
 p_data['sem_sim'] = list_sem_sim
 
 # save back
-p_data.to_csv(file_path, index=False)
+p_data.to_csv(input_path, index=False)
 
 # timing
 file_processing_time = time.time() - file_start_time
 
 print(f"Finished processing {filename} in {file_processing_time:.2f} seconds")
+
