@@ -95,9 +95,9 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 
 ## ⚙️ Running the Analysis Demos
 
-1️⃣ Download the Demo Script and the Associated Spreadsheet
+1️⃣ Download the Demo Script and Associated Datafile
 
-The script will perform analysis on the associated spreadsheet. The online location of spreadsheet associated with each script is encoded in the resepective script as 'input_path'.
+The script performs analysis on the associated data. The online location of the datafile associated with each script is encoded in the resepective script as 'input_path'.
 
 2️⃣ Install Required Python Packages
 
