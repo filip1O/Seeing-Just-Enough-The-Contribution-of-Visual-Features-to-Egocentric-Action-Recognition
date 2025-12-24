@@ -89,7 +89,7 @@ These files can be directly mapped to corresponding analyses and metadata in thi
 ## 🔍 Dependencies
 
 - **Python 3.11+**  
-  `pandas`, `numpy`, `sentence-transformers`, `gensim`, `scikit-learn`, `shap`, `matplotlib`, `seaborn`, `openpyxl`, `joblib`, `spacy`, `scipy`
+  `pandas`, `numpy`, `sentence-transformers`, `gensim`, `scikit-learn`, `shap`, `matplotlib`, `seaborn`, `openpyxl`, `joblib`, `spacy`, `scipy`, 'pydantic'
 
 ---
 
