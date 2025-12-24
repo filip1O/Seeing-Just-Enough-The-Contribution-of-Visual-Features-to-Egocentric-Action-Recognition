@@ -30,13 +30,13 @@ b = 1.375
 
 # set directories
 input_path = "Human Ground Truth/example_video_responses/10788.csv"      # Replace with path to your downloaded file with written responses
-out_input_path = ".../..."                                               # Replace with path for saving the results
+out_path = ".../..."                                               # Replace with path for saving the results
 
 # --------- specify one file to process ---------
 target_file = "10788.csv"
 file_path = os.path.join(input_path, target_file)
 out_file = "sem_space_" + target_file
-out_file_path = os.path.join(out_input_path, out_file)
+out_file_path = os.path.join(out_path, out_file)
 
 # ---------- PROCESS SINGLE FILE ----------
 file_start_time = time.time()
@@ -130,4 +130,5 @@ out_data.to_csv(out_file_path, index=False)
 file_processing_time = time.time() - file_start_time
 
 print(f"Processed {target_file} in {file_processing_time:.2f} seconds.")
+
 
