@@ -40,7 +40,7 @@ for feature in skewed_features:
 
 
 # Specify the label column
-y = df['MIRC']
+y = df['MIRC'] # set to 'MIRC' for MIRC vs. nonMIRC, 'Easy_classification_difficulty' for Easy vs. Hard MIRC, 'ts_rel_rec' for spatial vs. spatiotemporal MIRC
 # Prepare the data
 X = df[columns_to_keep]
 # Loop through all columns and check their data type, gather, dummy encode categorical features
@@ -99,8 +99,6 @@ all_precisions = []
 all_recalls = []
 all_feature_importances_easy = np.zeros((10, X.shape[1]))
 all_feature_importances = np.zeros((10, X.shape[1]))
-all_interaction_importances = []
-all_interaction_importances_easy = []
 all_shap_values_array = np.zeros((X.shape[0], X.shape[1]))
 all_shap_values_array_easy = np.zeros((X.shape[0], X.shape[1]))
 # Initialize lists for class-specific and difficulty-specific accuracies
@@ -117,8 +115,6 @@ for run in range(total_runs):
     feature_importances = np.zeros(X.shape[1])
     class_0_accuracy = []
     class_1_accuracy = []
-    # Initialize an array to accumulate interaction importances for this run
-    interaction_importances_run = []
     shap_values_run = np.zeros((X.shape[0], X.shape[1]))
     # Accumulate predictions and true labels
     all_y_true = []
@@ -148,11 +144,6 @@ for run in range(total_runs):
             # SHAP feature importance for class 0
             shap_importance_0 = np.abs(shap_values_class_0)  # Class 0 SHAP values
             feature_importances += shap_importance_0  # Accumulate SHAP importances for class 0
-            # SHAP interaction values for class 0
-            shap_interaction_values = explainer.shap_interaction_values(X_test)
-            shap_interaction_class_0 = shap_interaction_values[0][:, :, 0]  # Class 0 interaction
-            np.fill_diagonal(shap_interaction_class_0, 0)
-            interaction_importances_run.append(shap_interaction_class_0)
             # Collect SHAP values for class 0 for dependence plot
             shap_values_run[test_index, :] = shap_values_class_0
         else:  # Class 1 case
@@ -160,11 +151,6 @@ for run in range(total_runs):
             # SHAP feature importance for class 1
             shap_importance_1 = np.abs(shap_values_class_1)  # Class 1 SHAP values
             feature_importances += shap_importance_1  # Accumulate SHAP importances for class 1
-            # SHAP interaction values for class 1
-            shap_interaction_values = explainer.shap_interaction_values(X_test)
-            shap_interaction_class_1 = shap_interaction_values[0][:, :, 1]  # Class 1 interaction
-            np.fill_diagonal(shap_interaction_class_1, 0)
-            interaction_importances_run.append(shap_interaction_class_1)
             # Collect SHAP values for class 1 for dependence plot
             shap_values_run[test_index, :] = shap_values_class_1
     # Calculate the mean accuracy and F1-score for this run
@@ -183,11 +169,6 @@ for run in range(total_runs):
     # Average SHAP feature importances for this run
     feature_importances /= loo.get_n_splits(X)
     all_feature_importances[run] = feature_importances
-    # Aggregate interaction importances for this run
-    # After completing all LOO splits for the current run, average interaction importances across splits
-    mean_interaction_importances_run = np.mean(interaction_importances_run, axis=0)
-    # Append the result to the list of all runs
-    all_interaction_importances.append(mean_interaction_importances_run)
     # After completing LOOCV for this run, aggregate SHAP values across all splits
     all_shap_values_array += shap_values_run
     # Calculate elapsed time and estimate remaining time
@@ -287,69 +268,3 @@ if save_plots == 1:
     plt.savefig(os.path.join(plots_dir, 'shap_summary_all.png'))
 
 plt.show()
-
-# Calculate overall interaction importances
-# After all runs, aggregate the interaction importances across all runs
-mean_interaction_importances_all = np.mean(all_interaction_importances, axis=0)
-# Ensure that the interaction matrix has the correct shape: (n_features, n_features)
-assert mean_interaction_importances_all.shape == (X.shape[1], X.shape[1]), \
-    f"Expected shape {(X.shape[1], X.shape[1])}, but got {mean_interaction_importances_all.shape}"
-# Convert to a DataFrame for better visualization (n_features, n_features)
-interaction_df = pd.DataFrame(mean_interaction_importances_all, index=X.columns, columns=X.columns)
-# Convert the interaction matrix to a ranked list of interactions
-interaction_rankings = interaction_df.unstack().reset_index()
-interaction_rankings.columns = ['Feature 1', 'Feature 2', 'Interaction Importance']
-# Remove self-interactions (diagonal elements) where Feature 1 == Feature 2
-interaction_rankings = interaction_rankings[interaction_rankings['Feature 1'] != interaction_rankings['Feature 2']]
-# Sort by Interaction Importance in descending order
-interaction_rankings = interaction_rankings.sort_values(by='Interaction Importance', ascending=False)
-# Write interaction importances to the Excel file
-# Load the existing Excel file
-with pd.ExcelWriter(out_path, engine='openpyxl', mode='a', if_sheet_exists='new') as writer:
-    # Write the DataFrame to a new sheet
-    interaction_rankings.to_excel(writer, sheet_name='interaction_importances', index=False)
-
-# plot actual interaction importances
-# Set up a figure with larger size and white background
-plt.figure(figsize=(12, 10))  # Adjusted size for better label visibility
-plt.gcf().set_facecolor('white')  # Set background to white
-# Plot the heatmap with padding to allow for better label visibility
-sns.heatmap(interaction_df, annot=False, cmap='coolwarm', linewidths=.5, cbar_kws={"shrink": 0.8})
-# Add title
-plt.title("SHAP Interaction Importance Heatmap", fontsize=16)
-# Adjust the layout to ensure labels are not cut off
-plt.tight_layout(pad=2.0)
-# Save the plot with larger area for labels
-if save_plots == 1:
-    plt.savefig(os.path.join(plots_dir, 'shap_interaction_heatmap.png'), dpi=300, bbox_inches='tight', facecolor='white')
-
-# Show the plot
-plt.show()
-# plot absolute interaction importances
-# get rid of minus
-mean_interaction_importances_all_abs = np.abs(mean_interaction_importances_all)
-# Convert to a DataFrame for better visualization (n_features, n_features)
-interaction_df_abs = pd.DataFrame(mean_interaction_importances_all_abs, index=X.columns, columns=X.columns)
-# Set up a figure with larger size and white background
-plt.figure(figsize=(12, 10))  # Adjusted size for better label visibility
-plt.gcf().set_facecolor('white')  # Set background to white
-# Plot the heatmap with padding to allow for better label visibility
-sns.heatmap(interaction_df_abs, annot=False, cmap='coolwarm', linewidths=.5, cbar_kws={"shrink": 0.8})
-# Add title
-plt.title("SHAP Interaction Importance Heatmap", fontsize=16)
-# Adjust the layout to ensure labels are not cut off
-plt.tight_layout(pad=2.0)
-# Save the plot with larger area for labels
-if save_plots == 1:
-    plt.savefig(os.path.join(plots_dir, 'shap_interaction_heatmap_abs.png'), dpi=300, bbox_inches='tight', facecolor='white')
-
-# Show the plot
-plt.show()
-
-
-# Plot a dependence plot to examine specific interaction
-# Now plot the dependence plot using the accumulated SHAP values
-shap.dependence_plot('active hand', all_shap_values_array, X, interaction_index='contextual object') # can use all_shap_values_array_easy or all_shap_values_array_hard or all_shap_values_array
-
-shap.dependence_plot('background', all_shap_values_array, X, interaction_index='active object') # can use all_shap_values_array_easy or all_shap_values_array_hard or all_shap_values_array
-
