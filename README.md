@@ -105,6 +105,7 @@ Manually or by running in Shell (Windows) / Terminal (Mac) (must have GitHub ins
 ``` bash
 git clone https://github.com/filip1O/Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition.git
 cd "Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition"
+python -m pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
 ```
 
