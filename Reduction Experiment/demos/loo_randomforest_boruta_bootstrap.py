@@ -12,21 +12,20 @@ miss_values = 0
 input_path = "Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx"      # Replace with path to your downloaded excel file with samples and features for classification
 df = pd.read_excel(input_path, sheet_name='Sheet1')
 
-# interactions output
-int_out_path = '.../.....csv'           # Replace with .csv path to save the Boruta SHAP results for feature interactions
-# features output
-feat_out_path = '.../.....csv'          # Replace with .csv path to save the Boruta SHAP results for main feature effects
+# borut output
+feat_out_path = '.../boruta.csv'          # Replace with .csv path to save the Boruta SHAP results for main feature effects
 
 # Specify columns to keep (features to use)
-columns_to_keep = ['active_object', 'active_hand', 'contextual_object', 'background', 'salient_color', 'salient_dklcolor', 'salient_flicker', 'salient_intensity', 'salient_motion', 'salient_orientation', 'salient_contrast']  # replace with your desired features
+columns_to_keep = ['active_object', 'active_hand', 'contextual_objects', 'background', 'salient_colour', 'salient_dklcolour', 'salient_flicker', 'salient_intensity', 'salient_motion', 'salient_orientation', 'salient_contrast']  # replace with your desired features
 
 # Identify skewed features for log transformation
-skewed_features = ['active_object', 'active_hand', 'contextual_object', 'background', 'salient_color', 'salient_dklcolor', 'salient_flicker', 'salient_intensity', 'salient_motion', 'salient_orientation', 'salient_contrast']  # Replace with your actual skewed feature names
+skewed_features = ['active_object', 'active_hand', 'contextual_objects', 'background', 'salient_colour', 'salient_dklcolour', 'salient_flicker', 'salient_intensity', 'salient_motion', 'salient_orientation', 'salient_contrast']  # Replace with your actual skewed feature names
 # Apply log transformation to skewed features
 for feature in skewed_features:
     df[feature] = np.log1p(df[feature])  # Use log1p to handle zero values (log1p(x) = log(x + 1))
 
-y = df['MIRC']
+# Specify the label column
+y = df['MIRC'] # set to 'MIRC' for MIRC vs. nonMIRC, 'Easy_classification_difficulty' for Easy vs. Hard MIRC, 'ts_rel_rec' for spatial vs. spatiotemporal MIRC
 
 # Prepare the data
 X = df[columns_to_keep]
@@ -72,7 +71,6 @@ if miss_values == 1:
 #  - Performs Leave-One-Out CV with TreeSHAP
 #  - Compares real vs shadow (permuted) features
 #  - Bootstraps to estimate uncertainty and rank stability
-#  - Also computes SHAP interaction importances
 # ============================================================
 
 # ---------- 0) Initialize model ----------
@@ -90,7 +88,6 @@ rf = RandomForestClassifier(
 feat_names = X.columns.tolist()
 p = len(feat_names)                     # number of real features
 p2 = p * (p - 1) // 2                   # number of unique feature–feature pairs
-triu_ix = np.triu_indices(p, k=1)       # upper-triangular indices for pairwise interactions
 
 # Helper to create permuted (shadow) features for Boruta-style comparison
 def add_shadow(df, rng):
@@ -101,10 +98,10 @@ def add_shadow(df, rng):
     return pd.concat([df, shadow], axis=1)
 
 # ============================================================
-# 1) Leave-One-Out CV with SHAP (main & interaction effects)
+# 1) Leave-One-Out CV with SHAP
 # ============================================================
 loo, rng = LeaveOneOut(), np.random.default_rng(0)
-row_list, real_int_list, shadow_int_list = [], [], []
+row_list = []
 
 for train_idx, test_idx in loo.split(X):
     X_tr, X_te = X.iloc[train_idx], X.iloc[test_idx]
@@ -125,20 +122,6 @@ for train_idx, test_idx in loo.split(X):
     if arr.ndim == 3: arr = arr[0, :, -1]
     else: arr = arr.reshape(-1)
     row_list.append(np.abs(arr))           # take absolute SHAP importances
-
-    # ----- Interaction SHAP values -----
-    iv = expl.shap_interaction_values(X_te_sh)
-    if isinstance(iv, list): im = iv[-1]              # class-1 block
-    elif iv.ndim == 4: im = iv[0, :, :, -1]
-    elif iv.ndim == 3: im = iv[0]
-    else: raise ValueError(f"Unexpected interaction SHAP shape {iv.shape}")
-    abs_im = np.abs(im)
-
-    # Split into real–real and shadow–shadow submatrices
-    real_block = abs_im[:p, :p]
-    shadow_block = abs_im[p:, p:]
-    real_int_list.append(real_block[triu_ix])
-    shadow_int_list.append(shadow_block[triu_ix])
 
 # Stack LOOCV results
 shap_rows = np.vstack(row_list)
@@ -168,28 +151,7 @@ boruta_keep_strict = mean_imp > thr_strict
 boruta_keep_loose = mean_imp > thr_loose
 
 # ============================================================
-# 3) Interaction-level Boruta + bootstrap CI
-# ============================================================
-real_int = np.vstack(real_int_list)
-shadow_int = np.vstack(shadow_int_list)
-boot_int = np.empty((B, p2))
-for b in range(B):
-    idx = resample(np.arange(real_int.shape[0]), replace=True, random_state=rng.integers(1e9))
-    boot_int[b] = real_int[idx].mean(0)
-
-int_mean = boot_int.mean(0)
-ci_lo_int, ci_hi_int = np.percentile(boot_int, [2.5, 97.5], axis=0)
-
-thr_int_strict = np.percentile(shadow_int.max(1), 95)
-thr_int_loose = np.quantile(shadow_int.ravel(), 0.95)
-keep_int_strict = int_mean > thr_int_strict
-keep_int_loose = int_mean > thr_int_loose
-
-# Map interaction indices back to feature names
-pairs = [(feat_names[i], feat_names[j]) for i, j in zip(*triu_ix)]
-
-# ============================================================
-# 4) Feature rank stability across bootstraps
+# 3) Feature rank stability across bootstraps
 # ============================================================
 ref_order = mean_imp.argsort()[::-1]
 ref_ranks = np.empty_like(ref_order)
@@ -209,28 +171,7 @@ rank_width = rank_ci_hi - rank_ci_lo
 stable_rank = rank_width <= 2   # rank "stable" if varies ≤ 2 positions
 
 # ============================================================
-# 5) Interaction rank stability
-# ============================================================
-ref_order_int = int_mean.argsort()[::-1]
-ref_ranks_int = np.empty_like(ref_order_int)
-ref_ranks_int[ref_order_int] = np.arange(p2)
-
-boot_ranks_int = np.empty((B, p2), dtype=int)
-for b in range(B):
-    ord_b_int = boot_int[b].argsort()[::-1]
-    rk_b_int = np.empty_like(ord_b_int)
-    rk_b_int[ord_b_int] = np.arange(p2)
-    boot_ranks_int[b] = rk_b_int
-
-rho_int = np.array([spearmanr(ref_ranks_int, boot_ranks_int[b]).correlation for b in range(B)])
-print("Interaction rank‐stability ρ (mean):", rho_int.mean().round(3))
-
-rank_ci_lo_int, rank_ci_hi_int = np.percentile(boot_ranks_int, [2.5, 97.5], axis=0)
-rank_width_int = rank_ci_hi_int - rank_ci_lo_int
-stable_rank_int = rank_width_int <= 2
-
-# ============================================================
-# 6) Summaries: features + interactions
+# 4) Summary
 # ============================================================
 summary = pd.DataFrame({
     "feature": feat_names,
@@ -248,22 +189,6 @@ summary = pd.DataFrame({
     "stable_rank": stable_rank
 }).sort_values("mean|SHAP|", ascending=False).reset_index(drop=True)
 
-int_summary = pd.DataFrame({
-    "feature_i":[i for i,_ in pairs],
-    "feature_j":[j for _,j in pairs],
-    "mean|SHAP_int|":int_mean,
-    "ci_low": ci_lo_int,
-    "ci_high": ci_hi_int,
-    "keep_strict":keep_int_strict,
-    "keep_loose":keep_int_loose,
-    "thr_strict": thr_int_strict,
-    "thr_loose": thr_int_loose,
-    "rank_ref": ref_ranks_int,
-    "rank_ci_lo": rank_ci_lo_int,
-    "rank_ci_hi": rank_ci_hi_int,
-    "rank_width": rank_width_int,
-    "stable_rank": stable_rank_int
-}).sort_values("mean|SHAP_int|", ascending=False).reset_index(drop=True)
 
 # ============================================================
 # 7) Output
@@ -272,12 +197,5 @@ print("Global rank-stability ρ (mean over bootstraps):", rho.mean().round(3))
 print(summary.head(15))
 print(thr_strict)
 print(thr_loose)
-print("Top interactions (strict Boruta):")
-print(int_summary)
 
 summary.to_csv(feat_out_path, index=False)
-
-int_summary.to_csv(int_out_path, index=False)
-
-
-
