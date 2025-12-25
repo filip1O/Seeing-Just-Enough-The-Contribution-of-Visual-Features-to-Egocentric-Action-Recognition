@@ -12,7 +12,7 @@ miss_values = 0
 input_path = "Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx"      # Replace with path to your downloaded excel file with samples and features for classification
 df = pd.read_excel(input_path, sheet_name='Sheet1')
 
-# borut output
+# boruta output
 feat_out_path = '.../boruta.csv'          # Replace with .csv path to save the Boruta SHAP results for main feature effects
 
 # Specify columns to keep (features to use)
@@ -199,3 +199,4 @@ print(thr_strict)
 print(thr_loose)
 
 summary.to_csv(feat_out_path, index=False)
+
