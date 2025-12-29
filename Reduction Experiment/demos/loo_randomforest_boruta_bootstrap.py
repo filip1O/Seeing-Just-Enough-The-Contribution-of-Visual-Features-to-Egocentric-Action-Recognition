@@ -9,7 +9,7 @@ import os
 miss_values = 0
 
 # Load the excel file wwith samples and features
-input_path = "Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx"      # Replace with path to your downloaded excel file with samples and features for classification
+input_path = "Reduction Experiment/binary_classification_sets_and_results/Easy_vs_Hard_MIRCs/MIRCs_Easy_Hard_sample.xlsx"      # Replace with path to your downloaded excel file with samples for classification
 df = pd.read_excel(input_path, sheet_name='Sheet1')
 
 # boruta output
@@ -199,4 +199,5 @@ print(thr_strict)
 print(thr_loose)
 
 summary.to_csv(feat_out_path, index=False)
+
 
