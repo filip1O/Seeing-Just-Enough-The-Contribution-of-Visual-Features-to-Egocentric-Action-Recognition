@@ -73,8 +73,11 @@ Two main experiments were conducted:
 ---
 
 ## 📦 Human Ground Truth Videos and Epic-ReduAct
-The full database of videos used in Experiment 1 of this project, as well as videos, cropped quadrants, and MIRCs used in Experiment 2, is available at:
-[Download from OSF](https://osf.io/cxnm8) and [SadeghRahmaniB/Epic-ReduAct](https://github.com/SadeghRahmaniB/Epic-ReduAct)
+The full database of videos used in Experiment 1 of this project is available at:
+[OSF Exp 1](https://osf.io/kbsjy) and [SadeghRahmaniB/Epic-ReduAct](https://github.com/SadeghRahmaniB/Epic-ReduAct)
+
+The full database of videos used in Experiment 2 of this project is available at:
+[OSF Exp 2](https://osf.io/gh49w) and [SadeghRahmaniB/Epic-ReduAct](https://github.com/SadeghRahmaniB/Epic-ReduAct)
 
 These files can be directly mapped to corresponding analyses and metadata in this repository.
 
