@@ -135,3 +135,9 @@ For questions or collaboration:
 Filip Rybansky
 Newcastle University, Biosciences Institute
 📧 f.rybansky2@newcastle.ac.uk
+
+---
+
+## 💰 Acknowledgements
+
+Leverhulme Trust Research Project Grant RPG-2023-079 funded this work.
