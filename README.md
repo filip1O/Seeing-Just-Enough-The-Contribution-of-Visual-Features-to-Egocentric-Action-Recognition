@@ -1,6 +1,6 @@
-# Seeing Just Enough: The Minimal Visual Ingredients of Egocentric Action Recognition
+# Seeing Just Enough: The Contribution of Hands, Objects and Visual Features to Egocentric Action Recognition
 
-This repository accompanies the study **“Seeing Just Enough: The Minimal Visual Ingredients of Egocentric Action Recognition”**, investigating the spatial and temporal features that make everyday actions recognisable from first-person (egocentric) video.
+This repository accompanies the study **“Seeing Just Enough: The Contribution of Hands, Objects and Visual Features to Egocentric Action Recognition”**, investigating the spatial and temporal features that make everyday actions recognisable from first-person (egocentric) video.
 
 ---
 
