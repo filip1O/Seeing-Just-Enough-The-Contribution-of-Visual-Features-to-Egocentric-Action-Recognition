@@ -118,7 +118,19 @@ There are 4 demo scripts. HGT Demo Scripts in "Human Ground Truth/demos" and Red
 
 If you use these materials or build on this work, please cite:
 
-Rybansky, F. (2025). Seeing Just Enough: The Minimal Visual Ingredients of Egocentric Action Recognition.
+```bash
+@article {Rybansky2026.02.15.705896,
+	author = {Rybansky, Filip and Rahmaniboldaji, Sadegh and Gilbert, Andrew and Guerin, Frank and Hurlbert, Anya C. and Vuong, Quoc C.},
+	title = {Seeing Just Enough: The Contribution of Hands, Objects and Visual Features to Egocentric Action Recognition},
+	elocation-id = {2026.02.15.705896},
+	year = {2026},
+	doi = {10.64898/2026.02.15.705896},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2026/02/17/2026.02.15.705896},
+	journal = {bioRxiv}
+}
+
+```
 
 ---
 
