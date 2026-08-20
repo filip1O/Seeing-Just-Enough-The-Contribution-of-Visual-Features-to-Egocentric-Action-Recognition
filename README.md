@@ -9,8 +9,6 @@ This repository accompanies the study **“Seeing Just Enough: The Contribution 
 Humans can recognise complex actions from very limited visual information — sometimes just a few frames or small image regions.
 In this project, we identify **the minimal visual features** required for recognising actions in naturalistic egocentric videos from the [EPIC-Kitchens-100 dataset](https://epic-kitchens.github.io/).
 
-Two main experiments were conducted:
-
 1. **Experiment 1 – Human Ground Truth (HGT):**  
    Participants labelled short egocentric videos of everyday actions (e.g., *opening fridge*, *putting down cup*).  
    A custom **language-model framework (SBERT + Word2Vec)** quantified the semantic consistency of responses to derive robust *Human Ground Truth* labels.
@@ -19,6 +17,8 @@ Two main experiments were conducted:
    Consistently recognised videos were recursively **cropped** and **temporally scrambled** to identify the *Minimal Recognisable Configurations* (MIRCs) and the spatiotemporal features whose removal causes recognition breakdown.  
    Recognition was modelled using **linear mixed-effects models** and **random-forest feature classifiers** (with SHAP and Boruta analysis) on both high-level (hands, objects) and low/mid-level (orientation, motion, colour, etc.) visual features.
 
+3. **Eye tracking:** gaze was recorded while participants viewed Full videos or their MIRCs. Residual normalised scanpath saliency (rNSS) quantified how strongly object regions and GBVS feature maps predicted fixation location after removing image-centre bias.
+
 ---
 
 ## 🧠 Key Findings
@@ -26,6 +26,8 @@ Two main experiments were conducted:
 - Recognition breaks down abruptly once critical **hand–object and orientation features** are removed.  
 - *Easy* and *Hard* videos (based on network action classifier accuracy) differ not only in recognisability by humans but in the **relative weight of spatial and spatiotemporal features**.  
 - MIRCs typically occupied **~3–5 %** of the original visual scene, yet preserved enough information for accurate recognition.
+- The eye-tracking experiment confirmed Active Object and Orientation as the strongest fixation predictors.
+- Humans may use **adaptive sampling** to recognise actions hard-to-recognise for AI.
 
 ---
 
@@ -95,7 +97,7 @@ The script performs analysis on the associated data. The online location of the 
 
 2️⃣ Install Required Python Packages
 
-Manually or by running in Shell (Windows) / Terminal (Mac) (must have GitHub installed):
+Manually or by running in Shell (Windows) / Terminal (Mac) (must have Git installed):
 ``` bash
 git clone https://github.com/filip1O/Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition.git
 cd "Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition"
@@ -110,7 +112,7 @@ Replace the input and output path specifications in the downloaded script with y
 
 4️⃣ Run The Demo Script in a Python interpreter
 
-There are 4 demo scripts. HGT Demo Scripts in "Human Ground Truth/demos" and Reduction Experiment Demo Scripts in "Reduction Experiment/demos".
+There are 6 demo scripts. HGT Demo Scripts in "Human Ground Truth/demos", Reduction Experiment Demo Scripts in "Reduction Experiment/demos" and Eye-tracking Demo Scripts in "Eye Tracking/demos".
 
 ---
 
