@@ -71,6 +71,14 @@ In this project, we identify **the minimal visual features** required for recogn
 ├
 └─ "main_reduction_master.xlsx" - results of participant testing in Experiment 2 for each quadrant and various descriptive statistics
 
+
+📁 Eye Tracking/
+├─ 📁 demos/
+├─ "compute_residual_nss_compact.py" - script that demonstrates residual NSS computation on a compact feature-annotation file using single participant's data
+├─ "compute_residual_nss_raw.py" - script that demonstrates residual NSS computation on the raw feature-annotation files available via osf
+├─ "fixations_33974_A110_002.csv" - example fixation data of participant A110_002 on video 33974
+├─ "features_33974.npz" - compact feature-annotation file compatible the "compact" demo script
+└─ "example_output_33974_A110_002.xlsx" - example output of the "compact" demo script
 ```
 ---
 
