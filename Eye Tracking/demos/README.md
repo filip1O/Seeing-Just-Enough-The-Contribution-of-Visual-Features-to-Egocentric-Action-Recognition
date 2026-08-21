@@ -76,9 +76,9 @@ After saving the edited script, run:
 python "Eye Tracking/demos/compute_residual_nss_raw.py"
 ```
 
-The raw assets are not stored in the Git clone. The raw script streams the segmentation JSON with `ijson`, reads MATLAB v7.3/HDF5 references with `h5py`, and does not require MATLAB. A literal `.m` source file is not feature data; supply the corresponding `.mat` file.
+The raw assets are not stored in the Git clone. The raw script streams the segmentation JSON with `ijson`, reads MATLAB v7.3/HDF5 references with `h5py`, and does not require MATLAB. Supply the corresponding `.mat` file.
 
-`objects.xlsx` is unnecessary for compact execution because its object-index/category mapping is embedded in the NPZ. It is required by the raw script and should be distributed with the raw OSF assets.
+`objects.xlsx` (mapping of objects to objct categories - Active Hand, Active Object, Contextual Objects) is unnecessary for compact execution because its object-index/category mapping is embedded in the NPZ. It is required by the raw script and should be distributed with the raw OSF assets.
 
 ## Another participant or video
 
