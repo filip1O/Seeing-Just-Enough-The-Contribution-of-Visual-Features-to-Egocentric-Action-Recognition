@@ -123,7 +123,7 @@ Replace the input and output path specifications in the downloaded script with y
 There are 6 demo scripts. HGT Demo Scripts in "Human Ground Truth/demos", Reduction Experiment Demo Scripts in "Reduction Experiment/demos" and Eye-tracking Demo Scripts in "Eye Tracking/demos".
 
 
-5️⃣ See README.md for each demo
+5️⃣ See README.md in the directory of each demo
 
 
 ---
