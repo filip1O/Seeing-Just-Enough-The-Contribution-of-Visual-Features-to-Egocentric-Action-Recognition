@@ -74,8 +74,8 @@ if miss_values == 1:
 # ============================================================
 
 # ---------- 0) Initialize model ----------
-# As in the original analysis, the forest has no random_state. The separate
-# bootstrap/shadow RNG below does not fix the randomness of the forest fits.
+# Fix the forest's random draws; the shadow-feature and result bootstrap RNG
+# below is controlled separately.
 rf = RandomForestClassifier(
     n_estimators=500,          # Number of trees (higher = more stable, slower)
     criterion='gini',          # Classification criterion
@@ -83,7 +83,8 @@ rf = RandomForestClassifier(
     max_depth=None,            # No depth limit
     min_samples_split=2,
     min_samples_leaf=1,
-    max_features='sqrt'        # Standard heuristic for classification
+    max_features='sqrt',       # Standard heuristic for classification
+    random_state=42            # Reproducible bootstrap samples and feature selection
 )
 
 # ---------- Prepare constants ----------

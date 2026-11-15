@@ -82,8 +82,7 @@ if miss_values == 1:
 
 # Initialize LOOCV
 loo = LeaveOneOut()
-# Match the original analysis: no random_state is set for the forest, so
-# repeated runs can produce slightly different results.
+# Fix the forest's random draws so repeated demo runs use the same seed.
 model = RandomForestClassifier(
     n_estimators=500,          # Number of decision trees - Soydaner uses 150, more should only increase computational demands while maybe increasing performance
     criterion='gini',          # Soydaner uses MSE for a regression task
@@ -91,7 +90,8 @@ model = RandomForestClassifier(
     max_depth=None,            # No explicit maximum depth
     min_samples_split=2,       # Minimum number of samples required to split an internal node
     min_samples_leaf=1,        # Minimum number of samples required to be at a leaf node
-    max_features='sqrt'        # Number of features considered for the best split (use square root of features)
+    max_features='sqrt',       # Number of features considered for the best split (use square root of features)
+    random_state=42            # Reproducible bootstrap samples and feature selection
 )
 # Initialize lists to store results
 all_accuracies = []
