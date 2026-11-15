@@ -83,7 +83,7 @@ In this project, we identify **the minimal visual features** required for recogn
 ---
 
 ## 📦 Human Ground Truth Videos and Epic-ReduAct
-The full database of videos used in this project is available at:
+The full database of videos and raw data used in this project is available at:
 [OSF](https://osf.io/kbsjy) and [SadeghRahmaniB/Epic-ReduAct](https://github.com/SadeghRahmaniB/Epic-ReduAct)
 
 These files can be directly mapped to corresponding analyses and metadata in this repository.
