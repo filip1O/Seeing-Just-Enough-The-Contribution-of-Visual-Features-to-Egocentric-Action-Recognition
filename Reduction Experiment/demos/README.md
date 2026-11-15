@@ -42,8 +42,6 @@ The first run may download and cache `all-mpnet-base-v2` and `word2vec-google-ne
 
 `loo_randomforest_classification_and_shap.py` evaluates a binary random forest with leave-one-out cross-validation and computes feature importance and TreeSHAP values.
 
-Both random-forest demos set `random_state=42` for repeatable forest fits. The original analysis left this seed unset, so a seeded demo run is not guaranteed to reproduce the published numbers or example result workbooks exactly.
-
 The default feature set contains four object-region measures and seven GBVS saliency measures. The script log-transforms those features, optionally imputes missing values, fits a 500-tree random forest, aggregates classification metrics, and generates feature-importance and SHAP plots.
 
 Before running, review:
