@@ -74,6 +74,8 @@ if miss_values == 1:
 # ============================================================
 
 # ---------- 0) Initialize model ----------
+# As in the original analysis, the forest has no random_state. The separate
+# bootstrap/shadow RNG below does not fix the randomness of the forest fits.
 rf = RandomForestClassifier(
     n_estimators=500,          # Number of trees (higher = more stable, slower)
     criterion='gini',          # Classification criterion

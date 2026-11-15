@@ -82,7 +82,8 @@ if miss_values == 1:
 
 # Initialize LOOCV
 loo = LeaveOneOut()
-# Initialize the RandomForestClassifier with the specified hyperparameters
+# Match the original analysis: no random_state is set for the forest, so
+# repeated runs can produce slightly different results.
 model = RandomForestClassifier(
     n_estimators=500,          # Number of decision trees - Soydaner uses 150, more should only increase computational demands while maybe increasing performance
     criterion='gini',          # Soydaner uses MSE for a regression task

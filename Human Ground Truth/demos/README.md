@@ -24,16 +24,15 @@ It contains a `Response` column plus participant/video metadata. The output is n
 
 ## Configure before running
 
-This is a manually configured analysis snapshot rather than a command-line program. Edit the path block near the top of the script. Because the script joins `input_path` and `target_file`, `input_path` must be a directory:
+This is a manually configured analysis snapshot rather than a command-line program. Edit the path block near the top of the script. The script joins `input_path` and `target_file`, so `input_path` must be a directory:
 
 ```python
 input_path = "Human Ground Truth/example_video_responses"
 out_path = "Human Ground Truth/example_video_responses"
 target_file = "10788.csv"
-filename = target_file
 ```
 
-Defining `filename` ensures that out-of-vocabulary warning messages can identify the current file.
+The checked-in defaults use the example data directory for both input and output. Change `out_path` if you want the similarity matrix saved elsewhere.
 
 ## Run
 

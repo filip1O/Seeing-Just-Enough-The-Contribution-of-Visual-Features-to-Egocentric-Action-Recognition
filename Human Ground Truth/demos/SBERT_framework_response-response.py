@@ -29,8 +29,8 @@ p = 0.375
 b = 1.375
 
 # set directories
-input_path = "Human Ground Truth/example_video_responses/10788.csv"      # Replace with path to your downloaded file with written responses
-out_path = ".../..."                                               # Replace with path for saving the results
+input_path = "Human Ground Truth/example_video_responses"  # Directory containing the downloaded response CSV
+out_path = input_path  # Directory in which to save the similarity matrix
 
 # --------- specify one file to process ---------
 target_file = "10788.csv"

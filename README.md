@@ -107,8 +107,8 @@ The script performs analysis on the associated data. The online location of the 
 
 Manually or by running in Shell (Windows) / Terminal (Mac) (must have Git installed):
 ``` bash
-git clone https://github.com/filip1O/Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition.git
-cd "Seeing-Just-Enough-The-Minimal-Visual-Ingredients-of-Egocentric-Action-Recognition"
+git clone https://github.com/filip1O/Seeing-Just-Enough-The-Contribution-of-Visual-Features-to-Egocentric-Action-Recognition.git
+cd "Seeing-Just-Enough-The-Contribution-of-Visual-Features-to-Egocentric-Action-Recognition"
 python -m pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
 ```
