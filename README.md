@@ -17,7 +17,7 @@ In this project, we identify **the minimal visual features** required for recogn
    Consistently recognised videos were recursively **cropped** and **temporally scrambled** to identify the *Minimal Recognisable Configurations* (MIRCs) and the spatiotemporal features whose removal causes recognition breakdown.  
    Recognition was modelled using **linear mixed-effects models** and **random-forest feature classifiers** (with SHAP and Boruta analysis) on both high-level (hands, objects) and low/mid-level (orientation, motion, colour, etc.) visual features.
 
-3. **Eye tracking:** gaze was recorded while participants viewed Full videos or their MIRCs. Residual normalised scanpath saliency (rNSS) quantified how strongly object regions and GBVS feature maps predicted fixation location after removing image-centre bias.
+3. **Experiment 3 – Eye tracking:** gaze was recorded while participants viewed Full videos or their MIRCs. Residual normalised scanpath saliency (rNSS) quantified how strongly object regions and GBVS feature maps predicted fixation location after removing image-centre bias.
 
 ---
 
